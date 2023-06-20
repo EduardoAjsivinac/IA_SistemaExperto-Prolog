@@ -73,3 +73,5 @@ imprimir_hecho([]).
 imprimir_hecho([[CODIGO, NOMBRE]|Resto]) :-
     format("~w. ~w~n", [CODIGO, NOMBRE]),
     imprimir_hecho(Resto).
+
+
