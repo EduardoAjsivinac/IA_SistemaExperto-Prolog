@@ -13,12 +13,14 @@ main :-
     write('Selecciona la opcion que mas se adapte a tus preferencias: '),
     read(OPCION),
     write(''), nl,
-    criterios(OPCION).
+    criterios(OPCION),
+    main.
 
 criterios(OPCION):- (
         OPCION == 1 -> menu_presupuesto;
         OPCION == 2 -> menu_idioma;
         OPCION == 3 -> menu_calificacion;
         OPCION == 4 -> menu_clima;
-        OPCION == 5 -> menu_reportes
+        OPCION == 5 -> menu_reportes;
+        OPCION == 0 -> halt
     ).
