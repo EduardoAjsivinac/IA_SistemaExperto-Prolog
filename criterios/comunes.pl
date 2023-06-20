@@ -13,8 +13,14 @@ imprimir_registros([[IDHOTEL, NOMBRE_HOTEL, DIRECCION, DEPARTAMENTO, DISTANCIA, 
 
 encontrar_hoteles(REGISTROS, PRESUPUESTO, CALIFICACION, TIPO_HAB, CLIMA, DISTANCIA, VEHICULO, ALIMENTACION, DIAS, IDIOMA) :-
     findall([IDHOTEL, NOMBRE_HOTEL, DIRECCION, DEPARTAMENTO, DISTANCIA, PRECIOHABITACION, TOTAL, TIPO_HABITACION, GASOLINA, PRECIO_ALIMENTACION], (
-        hotel(IDHOTEL, NOMBRE_HOTEL, DIRECCION, _, HABITACIONSIMP, HABITACIONDOB, COMIDA, DEPARTAMENTO, DISTANCIA),
-        departamento(DEPARTAMENTO, _, _, _, _, PASAJE),
+        hotel(IDHOTEL, NOMBRE_HOTEL, DIRECCION, ESTRELLAS, HABITACIONSIMP, HABITACIONDOB, COMIDA, DEPARTAMENTO, DISTANCIA),
+        departamento(DEPARTAMENTO, _, _, _, TIPOCLIMA, PASAJE),
+        (
+            CLIMA > 0 ->(
+                clima(CLIMA, VALORCLIMA)
+            );
+            VALORCLIMA = TIPOCLIMA
+        ),
         (
             VEHICULO = 0 -> (
                 VALORPASAJE = PASAJE
@@ -25,6 +31,7 @@ encontrar_hoteles(REGISTROS, PRESUPUESTO, CALIFICACION, TIPO_HAB, CLIMA, DISTANC
         PRECIO_ALIMENTACION is ALIMENTACION * COMIDA * DIAS,
         (
             (
+                TIPO_HAB = -1,
                 PRESUPUESTO >= GASOLINA + (HABITACIONSIMP+ ALIMENTACION * COMIDA)*DIAS,
                 PRECIOHABITACION is HABITACIONSIMP * DIAS,
                 TIPO_HABITACION = 'Habitacion simple',
@@ -32,13 +39,37 @@ encontrar_hoteles(REGISTROS, PRESUPUESTO, CALIFICACION, TIPO_HAB, CLIMA, DISTANC
             )
             ;
             (
+                TIPO_HAB = -1,
+                PRESUPUESTO >= GASOLINA + (HABITACIONDOB+ ALIMENTACION * COMIDA)*DIAS,
+                PRECIOHABITACION is HABITACIONDOB * DIAS,
+                TIPO_HABITACION = 'Habitacion doble',
+                TOTAL is GASOLINA + (HABITACIONDOB + ALIMENTACION * COMIDA)*DIAS
+            )
+            ;
+            (
+                TIPO_HAB = 0,
+                PRESUPUESTO >= GASOLINA + (HABITACIONSIMP+ ALIMENTACION * COMIDA)*DIAS,
+                PRECIOHABITACION is HABITACIONSIMP * DIAS,
+                TIPO_HABITACION = 'Habitacion simple',
+                TOTAL is GASOLINA + (HABITACIONSIMP+ ALIMENTACION * COMIDA)*DIAS
+            )
+            ;
+            (
+                TIPO_HAB = 1,
                 PRESUPUESTO >= GASOLINA + (HABITACIONDOB+ ALIMENTACION * COMIDA)*DIAS,
                 PRECIOHABITACION is HABITACIONDOB * DIAS,
                 TIPO_HABITACION = 'Habitacion doble',
                 TOTAL is GASOLINA + (HABITACIONDOB + ALIMENTACION * COMIDA)*DIAS
             )
         ),
-        TOTAL =< PRESUPUESTO
+        TOTAL =< PRESUPUESTO,
+        TIPOCLIMA = VALORCLIMA,
+        ESTRELLAS >= CALIFICACION
+
     ), REGISTROS).
 
-encontrar_hoteles2(REGISTROS, ALIMENTACION, DIAS, PRESUPUESTO, VEHICULO) :-
+imprimir_hecho([]).
+
+imprimir_hecho([[CODIGO, NOMBRE]|Resto]) :-
+    format("~w. ~w~n", [CODIGO, NOMBRE]),
+    imprimir_hecho(Resto).

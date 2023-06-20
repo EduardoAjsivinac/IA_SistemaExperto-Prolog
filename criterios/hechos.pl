@@ -426,3 +426,7 @@ trabajador(298, 'Aracely', 'Oficinista', 30).
 trabajador(299, 'Carmelo', 'Oficinista', 30).
 trabajador(300, 'Lorein', 'Oficinista', 31).
 trabajador(301, 'yulisa', 'Encargado', 31).
+clima(1, 'calor').
+clima(2, 'frio').
+clima(3, 'templado').
+clima(4, 'tropical').
