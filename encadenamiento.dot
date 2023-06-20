@@ -1,0 +1,20 @@
+digraph G {
+    subgraph cluster_0 {
+        label = "Presupuesto";
+        node [style=filled shape=box];
+        "Alimentación incluída" -> "Tipo de vacaciones" -> 
+        "Días de estadía" -> "Clima de preferencia" -> "Transporte incluido" -> 
+        "Tipo de presupuesto" -> decision_presupuesto;
+        
+        "Moderado" -> "Tipo de habitación" -> ;
+        
+        
+        decision_presupuesto -> "Economico";
+        decision_presupuesto -> "Moderado";
+        decision_presupuesto -> "Ilimitado";
+        
+        
+        decision_presupuesto [shape = "circle" label = ""];
+    }
+}
+

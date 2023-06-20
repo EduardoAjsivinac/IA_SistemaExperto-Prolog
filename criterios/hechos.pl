@@ -1,9 +1,9 @@
 % hechos.pl
-continente(1, 'America')
-continente(2, 'Asia')
-continente(3, 'Africa')
-continente(4, 'Europa')
-continente(5, 'Oceania')
+continente(1, 'America').
+continente(2, 'Asia').
+continente(3, 'Africa').
+continente(4, 'Europa').
+continente(5, 'Oceania').
 
 cliente(1, 'Jose', 'Morales', 'Guatemala', E2, 'Soltero', 'Vacaciones', 1).
 cliente(2, 'Fabrizio', 'Sartini', 'Italia', E2, 'Casado', 'Vacaciones', 4).
