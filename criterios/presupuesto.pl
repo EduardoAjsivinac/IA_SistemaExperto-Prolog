@@ -39,7 +39,7 @@ menu_economico(PRESUPUESTO):-
     con_vehiculo(VEHICULO),
     dias_estadia(DIAS),
     % encontrar_hoteles(HOTELES, ALIMENTACION, DIAS, PRESUPUESTO, VEHICULO),
-    encontrar_hoteles(HOTELES, PRESUPUESTO, _, _, _, _, VEHICULO, ALIMENTACION, DIAS, _),
+    encontrar_hoteles(HOTELES, PRESUPUESTO, _, -1, _, _, VEHICULO, ALIMENTACION, DIAS, _),
     format('~|~tNOMBRE_HOTEL~t~20+~tTIPO_HABITACION~t~25+~tDEPARTAMENTO~t~15+~tGASOLINA~t~10+~tPRECIO_HABITACION~t~20+~tALIMENTACION~t~20+~tTOTAL~t~10+~tDIRECCION~t~n'),
     imprimir_registros(HOTELES)
     .

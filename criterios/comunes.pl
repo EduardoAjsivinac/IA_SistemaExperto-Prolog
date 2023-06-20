@@ -24,11 +24,6 @@ encontrar_hoteles(REGISTROS, PRESUPUESTO, CALIFICACION, TIPO_HAB, CLIMA, DISTANC
         GASOLINA is DISTANCIA * 12.5 * VEHICULO * 2 + VALORPASAJE * 2,
         PRECIO_ALIMENTACION is ALIMENTACION * COMIDA * DIAS,
         (
-            TIPO_HAB = 0 -> ( % Simple
-                VALIDAHAB = 0
-                );
-            VALORPASAJE = 0
-        (
             (
                 PRESUPUESTO >= GASOLINA + (HABITACIONSIMP+ ALIMENTACION * COMIDA)*DIAS,
                 PRECIOHABITACION is HABITACIONSIMP * DIAS,
