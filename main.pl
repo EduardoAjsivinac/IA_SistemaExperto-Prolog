@@ -1,4 +1,7 @@
 :- consult('criterios/presupuesto.pl').
+:- consult('criterios/idioma.pl').
+:- consult('criterios/calificacion.pl').
+:- consult('criterios/clima.pl').
 :- consult('reportes.pl').
 
 main :-

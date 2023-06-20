@@ -4,7 +4,10 @@ continente(2, 'Asia').
 continente(3, 'Africa').
 continente(4, 'Europa').
 continente(5, 'Oceania').
-
+idioma(1,'espanol').
+idioma(2,'katchikel').
+idioma(3,'ingles').
+idioma(4,'Ketchi').
 cliente(1, 'Jose', 'Morales', 'Guatemala', E2, 'Soltero', 'Vacaciones', 1).
 cliente(2, 'Fabrizio', 'Sartini', 'Italia', E2, 'Casado', 'Vacaciones', 4).
 cliente(3, 'Gustavo', 'Molina', 'Holanda', E2, 'Soltero', 'trabajo', 4).
